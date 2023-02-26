@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -39,13 +40,16 @@ public class MainActivity extends AppCompatActivity {
           Toast.makeText(MainActivity.this, "Recipe of the Day!", Toast.LENGTH_SHORT).show();
              }
            });
-
+        EditText ed = findViewById(R.id.ingredients);
         Button n = findViewById(R.id.next);
         n.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent inn1 = new Intent(getApplicationContext(), FoodActivity.class);
-                startActivity(inn1);
+                if (!ed.getText().toString().equals("")) {
+                    Intent inn1 = new Intent(getApplicationContext(), RecipeList.class);
+                    inn1.putExtra("ingredients", ed.getText().toString());
+                    startActivity(inn1);
+                }
             }
         });
 
@@ -53,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent inn2 = new Intent(getApplicationContext(), ROTDActivity.class);
+                inn2.putExtra("image_url", ":)");
+                inn2.putExtra("recipe_title", "Easy Key Lime Pie");
+                inn2.putExtra("id", 642003);
                 startActivity(inn2);
             }
         });

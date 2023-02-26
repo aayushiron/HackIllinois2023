@@ -20,7 +20,7 @@
 
 
                     <EditText
-                        android:id="@+id/editTextTextPersonName"
+                        android:id="@+id/ingredients"
                         android:layout_width="350dp"
                         android:layout_height="100dp"
                         android:ems="4"
